@@ -13,7 +13,7 @@
 #endif // if !defined(JSON_IS_AMALGAMATION)
 
 #if JSON_USE_EXCEPTION
-#define JSON_ASSERT( condition ) assert( condition );  // @todo <= change this into an exception throw
+#define JSON_ASSERT( condition ) if(!(condition)) { throw std::runtime_error( "JSON assertion failed!" ); } // @todo <= change this into an exception throw
 #define JSON_FAIL_MESSAGE( message ) throw std::runtime_error( message );
 #else  // JSON_USE_EXCEPTION
 #define JSON_ASSERT( condition ) assert( condition );
